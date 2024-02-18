@@ -1,24 +1,65 @@
-<h1>Places I've Visited</h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Places I've Been</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f8f8f8;
+    }
+    .container {
+      margin: 20px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      color: #333;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      padding: 8px 0;
+      border-bottom: 1px solid #eaeaea;
+    }
+    li:last-child {
+      border-bottom: none;
+    }
+    a {
+      color: #007bff;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .new-place-link {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 15px;
+      background: #007bff;
+      color: white;
+      border-radius: 4px;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Places I've Been</h1>
 
-<%= link_to 'New Place', new_place_path, class: 'btn btn-primary' %>
+    <ul>
+      <% @places.each do |place| %>
+        <li><%= link_to place.name, place_path(place) %></li>
+      <% end %>
+    </ul>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @places.each do |place| %>
-      <tr>
-        <td><%= link_to place.name, place %></td>
-        <td>
-          <!-- Add additional actions like edit or delete if required -->
-          <%= link_to 'View Entries', place_path(place) %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <%= link_to 'New Place', new_place_path, class: 'new-place-link' %>
+  </div>
+</body>
+</html>
 

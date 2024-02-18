@@ -1,13 +1,85 @@
-<h1>Add a New Place</h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>New Place</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f8f8;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      width: 80%;
+      margin: 20px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      color: #333;
+    }
+    .form-group {
+      margin-bottom: 10px;
+    }
+    label {
+      display: block;
+      margin-bottom: .5rem;
+      color: #333;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    input[type="submit"] {
+      background: #007bff;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    input[type="submit"]:hover {
+      background: #0056b3;
+    }
+    .btn-link {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 15px;
+      background: #f8f8f8;
+      color: #007bff;
+      border-radius: 4px;
+      text-decoration: none;
+      border: 1px solid #ccc;
+    }
+    .btn-link:hover {
+      background: #e7e7e7;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Add a New Place</h1>
 
-<%= form_with model: @place, local: true do |form| %>
-  <div class="form-group">
-    <%= form.label :name, class: 'control-label' %>
-    <%= form.text_field :name, class: 'form-control' %>
+    <%= form_with model: @place, local: true do |form| %>
+      <div class="form-group">
+        <%= form.label :name, 'Place Name' %>
+        <%= form.text_field :name, class: 'form-control' %>
+      </div>
+
+      <div class="actions">
+        <%= form.submit 'Create Place', class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+
+    <%= link_to 'Back to All Places', places_path, class: 'btn-link' %>
   </div>
+</body>
+</html>
 
-  <%= form.submit 'Create Place', class: 'btn btn-success' %>
-<% end %>
 
-<%= link_to 'Back to Places', places_path, class: 'btn btn-link' %>
 
