@@ -1,20 +1,87 @@
-<h1><%= @place.name %></h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= @place.name %></title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f8f8;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      width: 80%;
+      margin: 20px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    h1, h2 {
+      color: #333;
+    }
+    .entry {
+      border-bottom: 1px solid #eaeaea;
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+    }
+    .entry:last-child {
+      border-bottom: none;
+    }
+    .btn, .btn-link {
+      display: inline-block;
+      margin: 10px 0;
+      padding: 10px 15px;
+      border-radius: 4px;
+      text-decoration: none;
+    }
+    .btn {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background-color: #0056b3;
+    }
+    .btn-secondary {
+      background-color: #6c757d;
+    }
+    .btn-secondary:hover {
+      background-color: #5a6268;
+    }
+    .btn-link {
+      background-color: transparent;
+      color: #007bff;
+      border: 1px solid transparent;
+    }
+    .btn-link:hover {
+      border: 1px solid #007bff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1><%= @place.name %></h1>
 
-<%= link_to 'Back to All Places', places_path %>
-<%= link_to 'Add New Entry', new_place_entry_path(@place), class: 'btn btn-secondary' %>
+    <%= link_to 'Back to All Places', places_path, class: 'btn-link' %>
+    <%= link_to 'Add New Entry', new_place_entry_path(@place), class: 'btn btn-secondary' %>
 
-<h2>Journal Entries</h2>
-<div class="entries">
-  <% @entries.each do |entry| %>
-    <div class="entry">
-      <h3><%= entry.title %></h3>
-      <p><%= entry.description %></p>
-      <% if entry.posted_on.present? %>
-        <p><%= entry.posted_on.strftime('%B %d, %Y') %></p>
-      <% end %>
-      <!-- Add edit or delete links for entries if needed -->
-    </div>
-  <% end %>
-</div>
+    <h2>Journal Entries</h2>
+    <% @entries.each do |entry| %>
+      <div class="entry">
+        <h3><%= entry.title %></h3>
+        <p><%= entry.description %></p>
+        <% if entry.posted_on.present? %>
+          <p>Posted on: <%= entry.posted_on.strftime('%B %d, %Y') %></p>
+        <% else %>
+          <p>Date not available</p>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</body>
+</html>
+
 
 
