@@ -1,2 +1,17 @@
-<h1>Places#show</h1>
-<p>Find me in app/views/places/show.html.erb</p>
+<h1><%= @place.name %></h1>
+
+<%= link_to 'Back to All Places', places_path %>
+<%= link_to 'Add New Entry', new_place_entry_path(@place), class: 'btn btn-secondary' %>
+
+<h2>Journal Entries</h2>
+<div class="entries">
+  <% @entries.each do |entry| %>
+    <div class="entry">
+      <h3><%= entry.title %></h3>
+      <p><%= entry.description %></p>
+      <p><%= entry.date.strftime('%B %d, %Y') %></p>
+      <!-- Add edit or delete links for entries if needed -->
+    </div>
+  <% end %>
+</div>
+

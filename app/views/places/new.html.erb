@@ -1,2 +1,13 @@
-<h1>Places#new</h1>
-<p>Find me in app/views/places/new.html.erb</p>
+<h1>Add a New Place</h1>
+
+<%= form_with model: @place, local: true do |form| %>
+  <div class="form-group">
+    <%= form.label :name, class: 'control-label' %>
+    <%= form.text_field :name, class: 'form-control' %>
+  </div>
+
+  <%= form.submit 'Create Place', class: 'btn btn-success' %>
+<% end %>
+
+<%= link_to 'Back to Places', places_path, class: 'btn btn-link' %>
+
